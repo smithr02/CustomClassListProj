@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest1
@@ -106,6 +107,105 @@ namespace UnitTest1
             testList.Add(0);
             testList.Add(0);
             actual = testList.Count;
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemovingOneItem()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 1;
+            int actual;
+
+            testList.Remove(1);
+            
+            actual = testList.Count;
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemovingOneItemAndNotTheOthers()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            testList = (1, 3, 5);
+            int expected = testList(3,5);
+            int actual;
+
+            testList.Remove(1);
+
+            actual = testList =(3,5);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemovingMultipleItems()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            testList = (1, 3, 5);
+            int expected = testList(0);
+            int actual;
+
+            testList.Remove(1);
+            testList.Remove(3);
+            testList.Remove(5);
+
+            actual = testList = (0);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public bool BoolTestTrueRemove()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            testList = (1, 3, 5);
+            int expected = testList(1, 3, 5);
+            bool actual;
+
+            if (testList = 0)
+            {
+                return true;
+            }            
+            
+            testList.Remove(1);
+            testList.Remove(3);
+            testList.Remove(5);
+
+            actual = true;
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public bool BoolTestFalseRemove()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            testList = (1, 3, 5);
+            int expected = testList(1, 3, 5);
+            bool actual;
+
+            if (testList = 0)
+            {
+                return false;
+            }
+
+            testList.Remove(1);
+            testList.Remove(3);
+            
+            actual = false;
 
             // assert
             Assert.AreEqual(expected, actual);
