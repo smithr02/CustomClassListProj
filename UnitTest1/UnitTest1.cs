@@ -44,7 +44,7 @@ namespace UnitTest1
 
         // what happens if you add multiple things (or add to a CustomList that already has some values)?
         [TestMethod]
-        public void DontKnowWhatImDoing()
+        public void AddingMultipleThingsToAList()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -61,7 +61,7 @@ namespace UnitTest1
         }
         // what happens to the last-added item?
         [TestMethod]
-        public void DontKnowWhatImDoing()
+        public void CheckingForLastItemOnTheList()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -77,7 +77,7 @@ namespace UnitTest1
         }
         // what happens to the Count?
         [TestMethod]
-        public void DontKnowWhatImDoing()
+        public void CheckingTheCountOfTheList()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -92,7 +92,24 @@ namespace UnitTest1
         }
 
         // what happens if you add more items than the initial Capacity of the CustomList?
+        [TestMethod]
+        public void AddingMoreThanIntialCapacity()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 5;
+            int actual;
 
+            testList.Add(0);
+            testList.Add(0);
+            testList.Add(0);
+            testList.Add(0);
+            testList.Add(0);
+            actual = testList.Count;
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 
