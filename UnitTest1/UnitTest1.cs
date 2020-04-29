@@ -117,8 +117,10 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 1;
+            int expected = 0;
             int actual;
+
+            testList.Add(1);
 
             testList.Remove(1);
             
@@ -133,13 +135,15 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            testList = (1, 3, 5);
-            int expected = testList(3,5);
+            int expected = 2;
             int actual;
 
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(5);
             testList.Remove(1);
 
-            actual = testList =(3,5);
+            actual = testList.Count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -150,15 +154,17 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            testList = (1, 3, 5);
-            int expected = testList(0);
-            int actual;
+            int expected = 0; //only hard code the expected
+            int actual;  //never hard code the actual, something that you're testing
 
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(5);
             testList.Remove(1);
             testList.Remove(3);
             testList.Remove(5);
 
-            actual = testList = (0);
+            actual = testList.Count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -169,20 +175,12 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            testList = (1, 3, 5);
-            int expected = testList(1, 3, 5);
+            bool expected = true;
             bool actual;
 
-            if (testList = 0)
-            {
-                return true;
-            }            
-            
-            testList.Remove(1);
-            testList.Remove(3);
-            testList.Remove(5);
+            testList.Add(1);
 
-            actual = true;
+            actual = testList.Remove(1);
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -193,19 +191,10 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            testList = (1, 3, 5);
-            int expected = testList(1, 3, 5);
+            bool expected = false;
             bool actual;
 
-            if (testList = 0)
-            {
-                return false;
-            }
-
-            testList.Remove(1);
-            testList.Remove(3);
-            
-            actual = false;
+            actual = testList.Remove(1);
 
             // assert
             Assert.AreEqual(expected, actual);
