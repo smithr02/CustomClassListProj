@@ -199,6 +199,46 @@ namespace UnitTest1
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void ValueStayingInSpotTheyShould()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+
+            testList.Remove(1);
+
+            actual = testList[0];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ValueStayingInSpotTheyShould()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+
+            testList.Remove(1);
+
+            actual = testList[1];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 
