@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CustomClassList;
+
 
 namespace UnitTest1
 {
@@ -184,6 +186,7 @@ namespace UnitTest1
 
             // assert
             Assert.AreEqual(expected, actual);
+            return true;
         }
 
         [TestMethod]
@@ -198,6 +201,7 @@ namespace UnitTest1
 
             // assert
             Assert.AreEqual(expected, actual);
+            return false;
         }
 
         [TestMethod]
@@ -221,7 +225,7 @@ namespace UnitTest1
         }
 
         [TestMethod]
-        public void ValueStayingInSpotTheyShould()
+        public void ValueNotInTheRightSpot()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
