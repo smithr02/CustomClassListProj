@@ -159,29 +159,26 @@ namespace CustomClassList
             }
             return temp;
         }
-        public static  CustomList<T> ZIPO (CustomList<T> one, CustomList<T> two)
+        public static  CustomList<T> ZIP (CustomList<T> one, CustomList<T> two)
         {
+            int index = 0;
             CustomList<T> temp = new CustomList<T>();
-         if(one.count >= two.count)
-            {
-                for (int i = 0; i < one.count; i++)
-                {
-                    temp.Add(one[i]);
-                    if(i<two.count)
-                        temp.Add(two[i]);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < two.count; i++)
-                {
-                   
-                    if (i < one.count)
-                        temp.Add(one[i]);
 
-                    temp.Add(two[i]);
+            while (index < one.Count || index < two.Count)
+            {
+                if (index < one.Count)
+                {
+                    temp.Add(one[index]);
                 }
+
+                if (index < two.Count)
+                {
+                    temp.Add(two[index]);
+                }
+
+                index++;
             }
+           
             return temp;
         }
 
