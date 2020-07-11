@@ -204,16 +204,8 @@ namespace CustomClassList
         {
             
             for (int j = 0; j < two.count; j++)
-            {
-                for (int k = 0; k < one.count; k++)
-                {
-              
-                    if(two[j].Equals(one[k]))
-                    {
-                        one.Remove(one[k]); // number from list two gets removed from list one
-                    }
-                }
-                
+            {                                    
+               one.Remove(one[j]); // number from list two gets removed from list one               
             }
             return one;
         }
