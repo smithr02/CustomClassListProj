@@ -14,7 +14,7 @@ namespace CustomClassList
         // member variables (HAS A)
         private T[] items;
         private int capacity;
-        public int count;
+        private int count;
         public int Capacity { get => capacity; }
         public int Count { get => count; }
         // constructor (SPAWNER)
@@ -210,7 +210,7 @@ namespace CustomClassList
               
                     if(two[j].Equals(one[k]))
                     {
-                        one.RemoveAll(one[k]); //any number from list two gets removed from list one
+                        one.Remove(one[k]); // number from list two gets removed from list one
                     }
                 }
                 
