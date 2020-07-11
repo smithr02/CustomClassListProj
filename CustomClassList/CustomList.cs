@@ -94,7 +94,7 @@ namespace CustomClassList
             return removed;
         }
 
-        public void RemoveNull()
+        private void RemoveNull()
         {
             T[] temp = new T[capacity];
             int i = 0;
@@ -137,14 +137,11 @@ namespace CustomClassList
         public override string ToString()
         {
             string tempString = "";
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < count; i++)
             {
-                if (!items[i].Equals(default(T)))
-                {
-                    tempString += items[i].ToString();
-                    if (i + 1 != items.Length)
-                        tempString += ",";
-                }
+                tempString += items[i].ToString();
+                if (i + 1 != count)
+                    tempString += ",";               
             }
             return tempString;
         }
