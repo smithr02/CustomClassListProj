@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace CustomClassList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         // member variables (HAS A)
         private T[] items;
         private int capacity;
         public int count;
+        public int Capacity { get => capacity; }
+        public int Count { get => count; }
         // constructor (SPAWNER)
         public CustomList()
         {
@@ -59,32 +62,59 @@ namespace CustomClassList
 
         public bool Remove(T item)
         {
+            bool removed = false;
             for (int i = 0; i < capacity; i++) //looping through the array, checking per say
             {
                 if (items[i].Equals(item)) //if items at said index is equal to the item that is passed in
                 {
                     items[i] = default(T); //set it to "null" or default(T)
                     count--;
-                    return true;
+                    RemoveNull();
+                    removed =true;
+                    break;
                 }
             }
 
-            return false;
+            return removed;
         }
-        public void RemoveAll(T item)
+        public bool RemoveAll(T item)
         {
+            bool removed = false;
             for (int i = 0; i < capacity; i++) //looping through the array, checking per say
             {
                 if (items[i].Equals(item)) //if items at said index is equal to the item that is passed in
                 {
                     items[i] = default(T); //set it to "null" or default(T)
                     count--;
-                    
+                    RemoveNull();
+                    removed = true;
                 }
             }
 
-            return;
+            return removed;
         }
+
+        public void RemoveNull()
+        {
+            T[] temp = new T[capacity];
+            int i = 0;
+            int p = 0;
+            while (i < capacity)
+            {
+                if (!items[i].Equals(default(T)))
+                {
+                    temp[p] = items[i];
+                    i++;
+                    p++;
+                }
+                else
+                {
+                    i++; 
+                }
+            }
+            items = temp;
+        }
+
 
         public T this[int index]
         {
@@ -156,6 +186,14 @@ namespace CustomClassList
                 }
             }
             return temp;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
         }
 
         /// <summary>
