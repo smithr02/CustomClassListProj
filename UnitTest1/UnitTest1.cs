@@ -39,7 +39,7 @@ namespace UnitTest1
 
             // act
             testList.Add(itemToAdd);
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -51,13 +51,13 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = testList.Count + 3;
+            int expected = testList.count + 3;
             int actual;
 
             testList.Add(1);
             testList.Add(2);
             testList.Add(3);
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -74,7 +74,7 @@ namespace UnitTest1
             testList.Add(1);
             testList.Add(2);
             testList.Add(77);
-            actual = testList[testList.Count - 1];
+            actual = testList[testList.count - 1];
             // assert
             Assert.AreEqual(expected, actual);
         }
@@ -84,11 +84,11 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = testList.Count + 1;
+            int expected = testList.count + 1;
             int actual;
 
             testList.Add(0);
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -108,7 +108,7 @@ namespace UnitTest1
             testList.Add(0);
             testList.Add(0);
             testList.Add(0);
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -126,7 +126,7 @@ namespace UnitTest1
 
             testList.Remove(1);
             
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -145,7 +145,7 @@ namespace UnitTest1
             testList.Add(5);
             testList.Remove(1);
 
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -166,7 +166,7 @@ namespace UnitTest1
             testList.Remove(3);
             testList.Remove(5);
 
-            actual = testList.Count;
+            actual = testList.count;
 
             // assert
             Assert.AreEqual(expected, actual);

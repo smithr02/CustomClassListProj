@@ -13,13 +13,13 @@ namespace CustomClassList
         // member variables (HAS A)
         private T[] items;
         private int capacity;
-        public int Count;
+        public int count;
         // constructor (SPAWNER)
         public CustomList()
         {
             items = new T[4];
             capacity = 4;
-            Count = 0;
+            count = 0;
         }
 
         // member methods (CAN DO)
@@ -29,7 +29,7 @@ namespace CustomClassList
             // if we find a spot put the item there, if we get to the of the array with no empty spots,
             // double the size and add the item to the next created spot.
 
-            if (Count == capacity)
+            if (count == capacity)
             {
                 DoubleCapacity();
             }
@@ -38,7 +38,7 @@ namespace CustomClassList
                 if (items[i].Equals(default(T))) //if the spot in items array is null then setting that spot to the item that is being passed in.
                 {
                     items[i] = item; //setting the item thats being passed in
-                    Count++;   //increasing the count to keep track of the items in the array
+                    count++;   //increasing the count to keep track of the items in the array
                     break;
                 }
             }
@@ -64,7 +64,7 @@ namespace CustomClassList
                 if (items[i].Equals(item)) //if items at said index is equal to the item that is passed in
                 {
                     items[i] = default(T); //set it to "null" or default(T)
-                    Count--;
+                    count--;
                     return true;
                 }
             }
@@ -78,7 +78,7 @@ namespace CustomClassList
                 if (items[i].Equals(item)) //if items at said index is equal to the item that is passed in
                 {
                     items[i] = default(T); //set it to "null" or default(T)
-                    Count--;
+                    count--;
                     
                 }
             }
@@ -122,11 +122,11 @@ namespace CustomClassList
         public static CustomList<T> operator +(CustomList<T> one, CustomList<T> two)
         {
             CustomList<T> temp = new CustomList<T>();
-            for (int i = 0; i < one.Count; i++)
+            for (int i = 0; i < one.count; i++)
             {
                 temp.Add(one[i]);
             }
-            for (int i = 0; i < two.Count; i++)
+            for (int i = 0; i < two.count; i++)
             {
                 temp.Add(two[i]);
             }
@@ -135,21 +135,21 @@ namespace CustomClassList
         public static  CustomList<T> ZIPO (CustomList<T> one, CustomList<T> two)
         {
             CustomList<T> temp = new CustomList<T>();
-         if(one.Count >= two.Count)
+         if(one.count >= two.count)
             {
-                for (int i = 0; i < one.Count; i++)
+                for (int i = 0; i < one.count; i++)
                 {
                     temp.Add(one[i]);
-                    if(i<two.Count)
+                    if(i<two.count)
                         temp.Add(two[i]);
                 }
             }
             else
             {
-                for (int i = 0; i < two.Count; i++)
+                for (int i = 0; i < two.count; i++)
                 {
                    
-                    if (i < one.Count)
+                    if (i < one.count)
                         temp.Add(one[i]);
 
                     temp.Add(two[i]);
@@ -168,9 +168,9 @@ namespace CustomClassList
         public static CustomList<T> operator -(CustomList<T> one, CustomList<T> two)
         {
             
-            for (int j = 0; j < two.Count; j++)
+            for (int j = 0; j < two.count; j++)
             {
-                for (int k = 0; k < one.Count; k++)
+                for (int k = 0; k < one.count; k++)
                 {
               
                     if(two[j].Equals(one[k]))
