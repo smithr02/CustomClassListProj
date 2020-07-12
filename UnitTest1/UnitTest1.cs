@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomClassList;
-
+using System.Management.Instrumentation;
 
 namespace UnitTest1
 {
@@ -51,7 +51,7 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = testList.Count + 3;
+            int expected = 3;
             int actual;
 
             testList.Add(1);
@@ -79,20 +79,20 @@ namespace UnitTest1
             Assert.AreEqual(expected, actual);
         }
         // what happens to the Count?
-        [TestMethod]
-        public void CheckingTheCountOfTheList()
-        {
-            // arrange
-            CustomList<int> testList = new CustomList<int>();
-            int expected = testList.Count + 1;
-            int actual;
+        //[TestMethod]
+        //public void CheckingTheCountOfTheList()
+        //{
+        //    // arrange
+        //    CustomList<int> testList = new CustomList<int>();
+        //    int expected = testList.Count + 1;
+        //    int actual;
 
-            testList.Add(0);
-            actual = testList.Count;
+        //    testList.Add(0);
+        //    actual = testList.Count;
 
-            // assert
-            Assert.AreEqual(expected, actual);
-        }
+        //    // assert
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         // what happens if you add more items than the initial Capacity of the CustomList?
         [TestMethod]
@@ -100,7 +100,7 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 5;
+            int expected = 8;
             int actual;
 
             testList.Add(0);
@@ -108,7 +108,7 @@ namespace UnitTest1
             testList.Add(0);
             testList.Add(0);
             testList.Add(0);
-            actual = testList.Count;
+            actual = testList.Capacity;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -137,6 +137,25 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
+            int expected = 5;
+            int actual;
+
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(5);
+            testList.Remove(1);
+
+            actual = testList[3];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemovingOneItemAndNotTheOthersCountCheck()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
             int expected = 2;
             int actual;
 
@@ -153,6 +172,26 @@ namespace UnitTest1
 
         [TestMethod]
         public void RemovingMultipleItems()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 5; //only hard code the expected
+            int actual;  //never hard code the actual, something that you're testing
+
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(5);
+            testList.Remove(1);
+            testList.Remove(3);
+            
+            actual = testList[0];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemovingMultipleItemsCountCheck()
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
@@ -229,7 +268,7 @@ namespace UnitTest1
         {
             // arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 2;
+            int expected = default;
             int actual;
 
             testList.Add(1);
@@ -238,10 +277,38 @@ namespace UnitTest1
 
             testList.Remove(1);
 
-            actual = testList[1];
+            actual = testList[2];
 
             // assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void TestZipMethod()
+        {
+            CustomList<int> check1 = new CustomList<int>() { 1, 2, 3, 4 };
+            CustomList<int> check2 = new CustomList<int>() { 1, 2, 3, 4 };
+            CustomList<int> test;
+            int expected = 3;            
+
+            test = check1.ZIP(check1, check2);
+            int actual = test[5];
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void TestInstantiatedValues()
+        {
+            CustomList<int> check = new CustomList<int>() {1,2,3,4};
+            int expected = 3;
+            int actual = check[2];
+
+            Assert.AreEqual(expected, actual);
+
+              
         }
     }
 }

@@ -159,7 +159,7 @@ namespace CustomClassList
             }
             return temp;
         }
-        public static  CustomList<T> ZIP (CustomList<T> one, CustomList<T> two)
+        public  CustomList<T> ZIP (CustomList<T> one, CustomList<T> two)
         {
             int index = 0;
             CustomList<T> temp = new CustomList<T>();
