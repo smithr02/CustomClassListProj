@@ -145,7 +145,7 @@ namespace UnitTest1
             testList.Add(5);
             testList.Remove(1);
 
-            actual = testList[3];
+            actual = testList[1];
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -309,6 +309,17 @@ namespace UnitTest1
             Assert.AreEqual(expected, actual);
 
               
+        }
+
+        [TestMethod]
+
+        public void TestCharToString()
+        {
+            CustomList<char> charizard = new CustomList<char>() { 'a', 'b', 'c', 'd' };
+            string expected = "a,b,c,d" ;
+            string actual = charizard.ToString();
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

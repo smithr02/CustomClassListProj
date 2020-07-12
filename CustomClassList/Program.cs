@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 namespace CustomClassList
 {
     class Program
-    {
-        class MyClass
-        {
-            int x = 4;
-        }
+    {       
         static void Main(string[] args)
         {
             CustomList<int> Run = new CustomList<int>();
@@ -47,7 +43,7 @@ namespace CustomClassList
             Console.WriteLine(Test.ToString());
             Console.ReadLine();
 
-            Test = CustomList<int>.ZIPO(Run, Walk);
+            Test = Test2.ZIP(Run, Walk);
             Console.WriteLine(Test.ToString());
             Console.ReadLine();
 
